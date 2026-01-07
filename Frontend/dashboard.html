@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SignLingo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-cover bg-center bg-no-repeat min-h-screen" 
+      style="background-image: url('C:/Users/Vinod Mishra/Pictures/background.webp');">
+  
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-blue-500">SignLingo Dashboard</h1>
+    <div>
+      <a href="prediction.html" class="text-green-500 px-3 hover:underline">Prediction</a>
+      <a href="profile.html" class="text-green-500 px-3 hover:underline">Profile</a>
+      <a href="content.html" class="text-green-500 px-3 hover:underline">Content</a>
+      <button id="logoutBtn" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="p-8 text-white">
+    <h2 class="text-2xl font-bold mb-4">Welcome Back!</h2>
+    <p class="text-gray-200">Use the navigation to predict sign language gestures or view your profile.</p>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

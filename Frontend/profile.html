@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e3a8a; /* Tailwind bg-blue-900 */
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .profile-container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      padding: 30px;
+      width: 380px;
+      text-align: center;
+      color: #333;
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      text-align: left;
+      margin-top: 15px;
+      color: #444;
+    }
+
+    .info p {
+      margin: 8px 0;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 15px;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background-color: #2b4bb2;
+    }
+
+    .logout-btn {
+      background-color: #1e3a8a;
+    }
+
+    .logout-btn:hover {
+      background-color: #2b4bb2;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <h2>User Profile</h2>
+    <div id="profileMsg">Loading profile...</div>
+    <div class="info" id="userInfo"></div>
+
+    <!-- Buttons side by side -->
+    <div class="btn-container">
+      <button class="btn" id="dashboardBtn">🏠 Dashboard</button>
+      <button class="btn" id="predictionBtn">🤟 Translator</button>
+    </div>
+
+    <button class="btn logout-btn" id="logoutBtn">🚪 Login </button>
+  </div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    const profileMsg = document.getElementById("profileMsg");
+    const userInfo = document.getElementById("userInfo");
+    const dashboardBtn = document.getElementById("dashboardBtn");
+    const predictionBtn = document.getElementById("predictionBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Fetch user profile
+    if (!token) {
+      profileMsg.textContent = "You are not logged in.";
+    } else {
+      fetch("http://127.0.0.1:5001/auth/profile", {
+        headers: { "Authorization": `Bearer ${token}` }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.user) {
+          profileMsg.textContent = "Access Granted ✅";
+          userInfo.innerHTML = `
+            <p><strong>Name:</strong> ${data.user.name}</p>
+            <p><strong>Email:</strong> ${data.user.email}</p>
+            <p><strong>User ID:</strong> ${data.user.id}</p>
+          `;
+        } else {
+          profileMsg.innerHTML = `<span class='error'>${data.error || data.message}</span>`;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        profileMsg.innerHTML = "<span class='error'>Error loading profile.</span>";
+      });
+    }
+
+    // Buttons functionality
+    dashboardBtn.addEventListener("click", () => {
+      window.location.href = "dashboard.html";
+    });
+
+    predictionBtn.addEventListener("click", () => {
+      window.location.href = "prediction.html";
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>

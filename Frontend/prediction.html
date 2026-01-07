@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction - SignLingo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-blue-900">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-blue-500">SignLingo Prediction</h1>
+    <div>
+      <a href="dashboard.html" class="text-gray-700 px-3 hover:underline">Dashboard</a>
+      <a href="profile.html" class="text-gray-700 px-3 hover:underline">Profile</a>
+    </div>
+  </nav>
+
+  <!-- Prediction Section -->
+  <div class="p-8 flex flex-col items-center">
+    <h2 class="text-2xl font-bold mb-4 text-white">Real-time Sign Prediction</h2>
+
+    <!-- ✅ Use backend stream -->
+    <img id="videoFeed" src="http://127.0.0.1:5000/video"
+         class="border-2 border-gray-300 rounded-lg mb-4 w-96 h-72" />
+
+    <button id="startPrediction"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition mb-4">
+      Start Prediction
+    </button>
+
+    <p id="predictionResult" class="text-xl font-semibold text-green-300"></p>
+  </div>
+
+  <script src="js/prediction.js"></script>
+</body>
+</html>

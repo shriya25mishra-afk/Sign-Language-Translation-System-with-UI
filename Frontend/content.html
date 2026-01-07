@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Sign Language Translator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-900 text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white text-blue-600 shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">SignLingo</h1>
+    <button 
+      onclick="goBack()" 
+      class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+      ← Back
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex items-center justify-center p-8">
+    <div class="bg-white text-gray-800 rounded-xl shadow-lg p-8 max-w-3xl">
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 text-center">Real-Time Sign Language Translator</h2>
+      
+      <p class="mb-4">
+        The <strong>Real-Time Sign Language Translator</strong> is an innovative system designed to bridge
+        the communication gap between hearing-impaired individuals and non-signers. Using advanced 
+        <strong>machine learning</strong> and <strong>computer vision</strong> techniques, the translator 
+        detects and recognizes hand gestures captured via a webcam or smartphone camera, and converts them 
+        instantly into text or speech output.
+      </p>
+
+      <p class="mb-4">
+        The system employs a deep learning model trained on various sign language datasets. It processes
+        the input video frames, extracts hand landmarks, and identifies gestures using a neural network.
+        The recognized gestures are then translated into meaningful words or phrases, making it possible 
+        for real-time communication.
+      </p>
+
+      <p class="mb-4">
+        This project contributes to <strong>accessibility and inclusivity</strong> by helping people with 
+        hearing and speech disabilities communicate effortlessly in real-world scenarios like education,
+        healthcare, and public services.
+      </p>
+
+      <p class="text-gray-600 italic text-center mt-6">
+        “Breaking the silence with technology — empowering communication for everyone.”
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Function to go back to dashboard
+    function goBack() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+</body>
+</html>
